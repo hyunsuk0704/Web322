@@ -54,5 +54,12 @@ exports.addEmployee = function(){
         if(!employeeData.isManager)
         reject("");
     });
+};
+
+exports.getEmployeesByStatus = function (){
+
+    return new Promise((resolve, reject) => {
+        let emoployees()
+    })
 }
 
