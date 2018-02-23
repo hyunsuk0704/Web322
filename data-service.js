@@ -54,7 +54,15 @@ exports.addEmployee = function(employeeData){
 
     employeeData.employeeNum = employees.length + 1;
     employees.push(employeeData);
-    
+
+    return new Promise((resolve, reject) => {
+        resolve(employees);
+        if(employees.length == 0)
+        reject("no results returned");
+    });
+};
+
+exports.getEmployeesByStatus = function(status){
     return new Promise((resolve, reject) => {
         resolve(employees);
         if(employees.length == 0)

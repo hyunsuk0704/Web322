@@ -39,6 +39,13 @@ app.get('/employees', (req, res) => {
     })
 });
 
+app.get('/employees?status', (req, res) => {
+    dataService.getEmployeesByStatus(req.query.status)
+    .then((data) => {
+        res.json(data);
+    })
+});
+
 // This route will return a JSON formatted string containing all the employees whose isManager property is set to true.
 app.get('/managers', (req, res) => {
     dataService.getManagers()
@@ -81,6 +88,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.post('/employees/add', function(req, res) {
     dataService.addEmployee(req.body);    
+    console.log(req.body);
     res.redirect('/employees');
 }) 
 
