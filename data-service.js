@@ -46,3 +46,13 @@ exports.getDepartments = function(){
     });
 
 };  
+
+exports.addEmployee = function(){
+    return new Promise((resolve, reject) => {
+        let managers = employees.filter(employees => employees.isManager == true);
+        resolve(managers);
+        if(!employeeData.isManager)
+        reject("");
+    });
+}
+
