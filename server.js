@@ -80,11 +80,9 @@ app.get("/images", (req, res) => {
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.post('/employees/add', function(req, res) {
-    data.addEmployee(req.body);
+    dataService.addEmployee(req.body);    
     res.redirect('/employees');
 }) 
-
-
 
 app.get('*', (req, res) => {
     res.send("Page Not Found");

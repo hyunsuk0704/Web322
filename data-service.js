@@ -47,12 +47,17 @@ exports.getDepartments = function(){
 
 };  
 
-exports.addEmployee = function(){
-    return new Promise((resolve, reject) => {
-        let managers = employees.filter(employees => employees.isManager == true);
-        resolve(managers);
-        if(!employeeData.isManager)
-        reject("");
-    });
-}
+exports.addEmployee = function(employeeData){
+    if(!employeeData.isManager){
+        employeeData.isManager = false;
+    }
 
+    employeeData.employeeNum = employees.length + 1;
+    employees.push(employeeData);
+    
+    return new Promise((resolve, reject) => {
+        resolve(employees);
+        if(employees.length == 0)
+        reject("no results returned");
+    });
+};
